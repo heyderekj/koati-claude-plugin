@@ -1,0 +1,11 @@
+{
+    "name": "koati",
+    "owner": { "name": "Koati", "email": "help@koatiapp.com" },
+    "plugins": [
+        {
+            "name": "koati",
+            "source": "./plugins/koati",
+            "description": "Koati's connector and the routine that works through what your team left for you."
+        }
+    ]
+}

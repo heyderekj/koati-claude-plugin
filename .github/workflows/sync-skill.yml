@@ -1,0 +1,19 @@
+# Keeps the routine word for word with Koati's own (AssistantRoutine), weekly and by hand.
+name: Sync the routine
+on:
+    schedule: [{ cron: '0 6 * * 1' }]
+    workflow_dispatch:
+permissions:
+    contents: write
+    pull-requests: write
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: curl -fsSL https://koati.app/assistant/skill.md -o plugins/koati/skills/go-through-koati/SKILL.md
+            - uses: peter-evans/create-pull-request@v7
+              with:
+                  title: Bring the routine up to date with Koati
+                  branch: sync-routine
+                  commit-message: Bring the routine up to date with Koati
